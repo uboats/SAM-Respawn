@@ -119,6 +119,12 @@ function getAllgroup(info)
   
 end
 
+function clearAllgroup(info)
+  SAMgroup = {}
+  EWRgroup = {}
+  AWACSgroup = {}  
+end
+
 -- one time job: store all units info
 mist.scheduleFunction(getAllgroup, {'test'}, timer.getTime() + 5)
 
@@ -207,6 +213,9 @@ function RespawnAWACS(info)
 end
 
 function getAllrespawn(info)
+  clearAllgroup(info)
+  getAllgroup(info) -- get active grps on-the-fly
+
   --RespawnAWACS(info)
   RespawnEWR(info)
   RespawnSAM(info)
