@@ -89,7 +89,7 @@ function getSAMgroup(info)
       local possibleunittype = Unit.getTypeName(possibleunit)
       
       if possibleunittype == "Hawk sr" or possibleunittype == "Patriot str" or possibleunittype == "Kub 1S91 str" or possibleunittype == "S-300PS 40B6MD sr" or possibleunittype == "SA-11 Buk SR 9S18M1"
-      then -- should add S-300, kub etc
+      then
         local SAMgrp   = Unit.getGroup(possibleunit)
         local SAMgname = Group.getName(SAMgrp)
         local SAMgsize = Group.getSize(SAMgrp)
@@ -113,8 +113,8 @@ function getAllgroup(info)
   getEWRgroup(info)
   --getAWACSgroup(info)
 
-  --local totnum = #SAMgroup + #AWACSgroup + #EWRgroup
-  --local msg = 'Respawn: '..tostring(#SAMgroup)..', '..tostring(#EWRgroup)
+  --local totnum = #SAMgroup + #EWRgroup --+ #AWACSgroup
+  --local msg = 'SAM: '..tostring(#SAMgroup)..', EWR: '..tostring(#EWRgroup)
   --trigger.action.outText(msg,3)
   
 end
@@ -213,8 +213,9 @@ function RespawnAWACS(info)
 end
 
 function getAllrespawn(info)
-  clearAllgroup(info)
-  getAllgroup(info) -- get active grps on-the-fly
+  ---- disabled, malfunc
+  --clearAllgroup(info)
+  --getAllgroup(info) -- get active grps on-the-fly
 
   --RespawnAWACS(info)
   RespawnEWR(info)
